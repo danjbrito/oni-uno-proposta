@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ONI UNO — Ateliê de Gelato | Proposta de Site</title>
+  <meta name="description" content="Gelato artesanal em Brasília. Feito em pequena escala, com ingredientes naturais. O frio é o nosso único conservante." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="proposal-bar" role="region" aria-label="Controles da proposta">
+    <span class="proposal-bar__label">Proposta de site — ONI UNO</span>
+    <div class="proposal-bar__toggles" role="group" aria-label="Pré-visualizar layout">
+      <button type="button" class="proposal-bar__btn is-active" data-viewport="desktop">Computador</button>
+      <button type="button" class="proposal-bar__btn" data-viewport="mobile">Mobile</button>
+    </div>
+  </div>
+
+  <div class="viewport-shell" data-viewport="desktop">
+    <div class="site-frame">
+      <header class="site-header" id="topo">
+        <a class="logo" href="#topo" aria-label="ONI UNO — início">
+          <img class="logo__img" src="images/logo-oni-uno.png" alt="ONI UNO ateliê de gelato" width="52" height="52" />
+        </a>
+
+        <nav class="nav" aria-label="Principal">
+          <a href="#manifesto">Manifesto</a>
+          <a href="#sabores">Sabores</a>
+          <a href="#tamanhos">Tamanhos</a>
+          <a href="#experiencia">Experiência</a>
+          <a href="#lojas">Lojas</a>
+          <a href="#parceiros">Parceiros</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="btn btn--ghost" href="https://www.instagram.com/oniunogelato" target="_blank" rel="noopener">Instagram</a>
+          <a class="btn btn--solid" href="#lojas">Visitar</a>
+          <button type="button" class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+            <span></span><span></span>
+          </button>
+        </div>
+      </header>
+
+      <div class="mobile-nav" hidden>
+        <a href="#manifesto">Manifesto</a>
+        <a href="#sabores">Sabores</a>
+        <a href="#tamanhos">Tamanhos</a>
+        <a href="#experiencia">Experiência</a>
+        <a href="#lojas">Lojas</a>
+        <a href="#parceiros">Parceiros</a>
+        <a class="btn btn--solid" href="#lojas">Visitar uma loja</a>
+      </div>
+
+      <main>
+        <!-- HERO: brand-first, full-bleed, minimal -->
+        <section class="hero">
+          <div class="hero__media" aria-hidden="true">
+            <img src="images/lifestyle-mesa.jpg" alt="" class="hero__img" />
+            <div class="hero__veil"></div>
+          </div>
+          <div class="hero__content">
+            <h1 class="hero__brand">
+              <img class="hero__logo" src="images/logo-oni-uno.png" alt="ONI UNO ateliê de gelato" width="196" height="196" />
+            </h1>
+            <p class="hero__lead">Gelato artesanal em pequena escala. Natural de verdade — conservado apenas pelo frio.</p>
+            <div class="hero__cta">
+              <a class="btn btn--solid btn--lg" href="#sabores">Ver sabores</a>
+              <a class="btn btn--light btn--lg" href="#lojas">Asa Norte &amp; Sudoeste</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="manifesto" id="manifesto">
+          <div class="manifesto__copy reveal">
+            <p class="eyebrow">Nosso jeito</p>
+            <h2>O frio é o nosso único conservante</h2>
+            <p>Feitos com fruta natural, sem aromas nem corantes artificiais e com baixa incorporação de ar. Usamos fruta sem tratamento térmico para preservar vitaminas e deixar o sabor mais intenso.</p>
+          </div>
+          <figure class="manifesto__figure reveal">
+            <img src="images/ingredientes.jpg" alt="Ingredientes frescos e copinhos ONI UNO sobre mármore" />
+          </figure>
+        </section>
+
+        <section class="story-strip reveal">
+          <img src="images/cozinha.jpg" alt="Preparação artesanal de base de frutas em panela de cobre" />
+          <blockquote>
+            <p>“Cada sabor é elaborado para preservar a cor, o aroma e o sabor genuíno de cada ingrediente.”</p>
+            <cite>Vanessa Brito — fundadora &amp; mestre gelateira</cite>
+          </blockquote>
+        </section>
+
+        <section class="sabores" id="sabores">
+          <div class="section-head reveal">
+            <p class="eyebrow">Cardápio vivo</p>
+            <h2>Sabores que mudam com a estação</h2>
+            <p>À base de leite, sorbetes de água e opções diet — sempre frescos, sempre da casa.</p>
+          </div>
+
+          <div class="flavor-tabs reveal" role="tablist" aria-label="Categorias de sabores">
+            <button type="button" class="flavor-tab is-active" role="tab" aria-selected="true" data-panel="leite">À base de leite</button>
+            <button type="button" class="flavor-tab" role="tab" aria-selected="false" data-panel="agua">À base de água</button>
+            <button type="button" class="flavor-tab" role="tab" aria-selected="false" data-panel="diet">Diet</button>
+          </div>
+
+          <div class="flavor-panels">
+            <div class="flavor-panel is-active" id="panel-leite" role="tabpanel">
+              <div class="flavor-grid">
+                <article class="flavor">
+                  <h3>Chocolate branco com caramelo e crocante</h3>
+                  <p>Chocolate branco, calda de caramelo salgado e crocante de amêndoas.</p>
+                  <span class="tag">castanhas</span>
+                </article>
+                <article class="flavor">
+                  <h3>Casadinho</h3>
+                  <p>Fior di latte mesclado com brigadeiro de panela — chocolate e branco.</p>
+                </article>
+                <article class="flavor">
+                  <h3>Fior di Latte</h3>
+                  <p>Leite e creme de leite fresco. O clássico que combina com tudo.</p>
+                </article>
+                <article class="flavor">
+                  <h3>Paçoca</h3>
+                  <p>Amendoim com farofinha de paçoca.</p>
+                  <span class="tag">amendoim</span>
+                </article>
+                <article class="flavor">
+                  <h3>Pistache</h3>
+                  <p>Cremoso, aveludado, levemente tostado.</p>
+                  <span class="tag">castanhas</span>
+                </article>
+                <article class="flavor">
+                  <h3>Gianduia</h3>
+                  <p>Chocolate com avelã — aquele bombom dourado, sabe?</p>
+                  <span class="tag">castanhas</span>
+                </article>
+                <article class="flavor">
+                  <h3>Banoffee</h3>
+                  <p>Banana, doce de leite e farofinha de biscoito.</p>
+                  <span class="tag">glúten</span>
+                </article>
+                <article class="flavor">
+                  <h3>Cheesecake de morango</h3>
+                  <p>Cream cheese, massa de torta e geleia artesanal da casa.</p>
+                  <span class="tag">glúten</span>
+                </article>
+              </div>
+            </div>
+
+            <div class="flavor-panel" id="panel-agua" role="tabpanel" hidden>
+              <div class="flavor-grid">
+                <article class="flavor">
+                  <h3>Frutas Vermelhas</h3>
+                  <p>Sorbet de amora, framboesa e morango.</p>
+                  <span class="tag tag--teal">vegano</span>
+                </article>
+                <article class="flavor">
+                  <h3>Manga com maracujá</h3>
+                  <p>Combinação tropical, leve e intensa.</p>
+                  <span class="tag tag--teal">vegano</span>
+                </article>
+                <article class="flavor">
+                  <h3>Abacaxi e caju</h3>
+                  <p>Sorbet de abacaxi com caju.</p>
+                  <span class="tag tag--teal">vegano</span>
+                </article>
+                <article class="flavor">
+                  <h3>Cajá</h3>
+                  <p>Sorbet de cajá puro.</p>
+                  <span class="tag tag--teal">vegano</span>
+                </article>
+                <article class="flavor">
+                  <h3>Chocolate Sorbetto</h3>
+                  <p>Cacau intenso, água e açúcar.</p>
+                  <span class="tag tag--teal">vegano</span>
+                </article>
+              </div>
+            </div>
+
+            <div class="flavor-panel" id="panel-diet" role="tabpanel" hidden>
+              <p class="flavor-note">Feito para quem busca equilíbrio, sem abrir mão do sabor.</p>
+              <div class="flavor-grid flavor-grid--compact">
+                <article class="flavor"><h3>Coco Diet</h3></article>
+                <article class="flavor"><h3>Café Diet</h3></article>
+                <article class="flavor"><h3>Paçoca Diet</h3><span class="tag">amendoim</span></article>
+                <article class="flavor"><h3>Fior di latte Diet</h3></article>
+                <article class="flavor"><h3>Chocolate Diet</h3></article>
+                <article class="flavor"><h3>Morango Diet</h3></article>
+              </div>
+            </div>
+          </div>
+
+          <figure class="sabores__visual reveal">
+            <img src="images/sabores-bowls.jpg" alt="Seleção de sabores ONI UNO em potinhos de vidro" />
+          </figure>
+        </section>
+
+        <section class="tamanhos" id="tamanhos">
+          <div class="section-head reveal">
+            <p class="eyebrow">Como pedir</p>
+            <h2>Escolha o tamanho</h2>
+            <p>Copinhos com biscoito da casa, casquinhas artesanais ou embalagens para levar.</p>
+          </div>
+
+          <div class="size-grid reveal">
+            <article class="size-card">
+              <img src="images/copo-pistache.jpg" alt="Copo de gelato pistache e fior di latte" />
+              <div>
+                <h3>Copinhos</h3>
+                <p>Até 3 sabores + biscoito artesanal</p>
+                <ul>
+                  <li><span>Pequeno 125g</span><strong>R$ 16</strong></li>
+                  <li><span>Médio 150g</span><strong>R$ 18</strong></li>
+                  <li><span>Grande 200g</span><strong>R$ 20</strong></li>
+                </ul>
+              </div>
+            </article>
+            <article class="size-card">
+              <img src="images/processo-casquinha.jpg" alt="Montagem de casquinha artesanal" />
+              <div>
+                <h3>Casquinhas</h3>
+                <p>Até 2 sabores · feitas na gelateria · 150g</p>
+                <ul>
+                  <li><span>Tradicional</span><strong>R$ 21</strong></li>
+                  <li><span>Com Nutella</span><strong>R$ 24</strong></li>
+                </ul>
+              </div>
+            </article>
+            <article class="size-card size-card--wide">
+              <img src="images/hero-produto.jpg" alt="Copo ONI UNO com biscoito da marca" />
+              <div>
+                <h3>Para levar</h3>
+                <p>Até 3 sabores + biscoitos da casa</p>
+                <ul>
+                  <li><span>½ kg (690ml)</span><strong>R$ 55</strong></li>
+                  <li><span>1 kg (1300ml)</span><strong>R$ 95</strong></li>
+                </ul>
+                <p class="size-extra">Picolé bebê (100% frutas) · geLate para pets — renda para a ONG Resgate Noroeste</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="experiencia" id="experiencia">
+          <div class="exp-grid">
+            <figure class="exp-media reveal">
+              <img src="images/amigos.jpg" alt="Amigos compartilhando gelato na área externa" />
+            </figure>
+            <div class="exp-copy reveal">
+              <p class="eyebrow">Mais do que gelato</p>
+              <h2>Momentos para saborear juntos</h2>
+              <p>Do ambiente acolhedor aos sabores feitos com carinho — a experiência ONI UNO é para viver na loja, com amigos, família e também com o seu pet.</p>
+              <ul class="exp-list">
+                <li>Gelato espatulado, cremosidade em evidência</li>
+                <li>Biscoitos e casquinhas produzidos na casa</li>
+                <li>Pet friendly — água fresca e geLate para pets</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="historia" id="historia">
+          <div class="historia__inner reveal">
+            <p class="eyebrow">Nossa história</p>
+            <h2>O nome ONI-UNO vem da ideia de ser único</h2>
+            <p class="historia__lead">Um produto feito para ser exclusivo — como cada pessoa, cada momento.</p>
+            <div class="historia__columns">
+              <p>O projeto nasceu em 2017 para produzir sorvetes de forma artesanal, em pequena escala — sempre fresco, feito com atenção e cuidado.</p>
+              <p>Ingredientes naturais, frescos e de produtores locais, sem conservantes nem aditivos químicos. Servidos espatulados em copinhos com biscoitos artesanais ou em casquinhas da própria gelateria.</p>
+            </div>
+          </div>
+          <figure class="historia__visual reveal">
+            <img src="images/loja-collage.jpg" alt="Ambiente da loja ONI UNO com neon e atendimento" />
+          </figure>
+        </section>
+
+        <section class="lojas" id="lojas">
+          <div class="section-head reveal">
+            <p class="eyebrow">Onde nos encontrar</p>
+            <h2>Nossas lojas em Brasília</h2>
+            <p>Venha viver momentos ainda mais doces com a gente.</p>
+          </div>
+
+          <div class="store-grid reveal">
+            <article class="store">
+              <h3>Sudoeste</h3>
+              <p class="store__addr">CLSW 103 Bloco B Loja 1 — Subsolo</p>
+              <ul class="store__hours">
+                <li><span>Segunda</span><span>12h – 18h</span></li>
+                <li><span>Terça a domingo</span><span>12h – 19h</span></li>
+              </ul>
+              <div class="store__actions">
+                <a class="btn btn--solid" href="https://maps.google.com/?q=CLSW+103+Bloco+B+Loja+1+Sudoeste+Brasília" target="_blank" rel="noopener">Como chegar</a>
+                <a class="btn btn--ifood" href="https://www.ifood.com.br/delivery/brasilia-df/oni-uno-gelato---sorvete-sudoeste-setor-sudoeste/a16ed348-624a-4c3f-95b3-22ea90a01055" target="_blank" rel="noopener">Pedir no iFood</a>
+              </div>
+            </article>
+            <article class="store">
+              <h3>Asa Norte</h3>
+              <p class="store__addr">CLN 303 Bloco A Loja 16</p>
+              <ul class="store__hours">
+                <li><span>Terça</span><span>12h – 18h</span></li>
+                <li><span>Quarta a domingo</span><span>12h – 20h</span></li>
+                <li><span>Segunda</span><span>Fechado</span></li>
+              </ul>
+              <div class="store__actions">
+                <a class="btn btn--solid" href="https://maps.google.com/?q=CLN+303+Bloco+A+Loja+16+Asa+Norte+Brasília" target="_blank" rel="noopener">Como chegar</a>
+                <a class="btn btn--ifood" href="https://www.ifood.com.br/delivery/brasilia-df/oni-uno-gelato---sorvete-asa-norte-asa-norte/f6c8bb5d-3c3e-4d44-b9ca-97238064ccbe" target="_blank" rel="noopener">Pedir no iFood</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="parceiros" id="parceiros">
+          <div class="parceiros__inner reveal">
+            <div class="parceiros__copy">
+              <p class="eyebrow">Para o seu negócio</p>
+              <h2>Leve o gelato ONI UNO ao seu cardápio</h2>
+              <p>Atendemos restaurantes, cafeterias, hotéis, buffets e empresas que buscam uma experiência gastronômica diferenciada. Produção artesanal em Brasília, com matérias-primas naturais e frescas.</p>
+              <a class="btn btn--light btn--lg" href="mailto:contato@oni-Uno.com.br">Falar com a equipe</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="footer__brand">
+          <img class="logo__img" src="images/logo-oni-uno.png" alt="ONI UNO ateliê de gelato" width="56" height="56" />
+        </div>
+        <div class="footer__meta">
+          <a href="mailto:contato@oni-Uno.com.br">contato@oni-Uno.com.br</a>
+          <a href="https://www.instagram.com/oniunogelato" target="_blank" rel="noopener">@oniunogelato</a>
+        </div>
+        <p class="footer__note">Proposta de redesign · conteúdo baseado em oni-uno.com</p>
+      </footer>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
