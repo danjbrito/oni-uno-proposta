@@ -56,20 +56,33 @@
     });
   });
 
+  const showReveal = (el) => el.classList.add("is-visible");
+
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
+            showReveal(entry.target);
             io.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.16, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -10% 0px" }
     );
-    reveals.forEach((el) => io.observe(el));
+    reveals.forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight * 0.92 && rect.bottom > 40;
+      if (inView) showReveal(el);
+      else io.observe(el);
+    });
+    // Fallback: nunca deixar conteúdo preso invisível
+    window.setTimeout(() => {
+      reveals.forEach((el) => {
+        if (!el.classList.contains("is-visible")) showReveal(el);
+      });
+    }, 1800);
   } else {
-    reveals.forEach((el) => el.classList.add("is-visible"));
+    reveals.forEach(showReveal);
   }
 })();
