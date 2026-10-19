@@ -605,6 +605,18 @@ ul {
   grid-template-columns: 0.7fr 1.3fr;
 }
 
+.size-card--picoles {
+  grid-column: 1 / -1;
+  grid-template-columns: 1fr;
+  background:
+    linear-gradient(160deg, rgba(42, 168, 160, 0.1), transparent 45%),
+    rgba(255, 255, 255, 0.72);
+}
+
+.size-card--picoles > div {
+  padding: 1.4rem 1.5rem 1.5rem;
+}
+
 .size-card img {
   width: 100%;
   height: 100%;
@@ -635,15 +647,36 @@ ul {
 .size-card li {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   gap: 1rem;
   padding-bottom: 0.45rem;
   border-bottom: 1px dashed rgba(28, 23, 20, 0.12);
   font-size: 0.95rem;
 }
 
-.size-extra {
-  margin-top: 1rem !important;
-  font-size: 0.88rem !important;
+.size-card li > div {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0;
+}
+
+.size-card li small {
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.size-card--picoles ul {
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.size-card--picoles li {
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(28, 23, 20, 0.08);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid rgba(28, 23, 20, 0.08);
 }
 
 /* Experiência */
@@ -900,9 +933,14 @@ ul {
   }
 
   .size-card,
-  .size-card--wide {
+  .size-card--wide,
+  .size-card--picoles {
     grid-template-columns: 1fr;
     background: #fff;
+  }
+
+  .size-card--picoles ul {
+    grid-template-columns: 1fr;
   }
 
   .size-card > div {
@@ -1010,9 +1048,14 @@ ul {
 }
 
 .viewport-shell[data-viewport="mobile"] .size-card,
-.viewport-shell[data-viewport="mobile"] .size-card--wide {
+.viewport-shell[data-viewport="mobile"] .size-card--wide,
+.viewport-shell[data-viewport="mobile"] .size-card--picoles {
   grid-template-columns: 1fr;
   background: #fff;
+}
+
+.viewport-shell[data-viewport="mobile"] .size-card--picoles ul {
+  grid-template-columns: 1fr;
 }
 
 .viewport-shell[data-viewport="mobile"] .size-card > div {
