@@ -1159,6 +1159,12 @@ ul {
   max-width: 52rem;
 }
 
+.page-menu .size-card--single,
+.page-menu .size-grid .size-card:only-child {
+  grid-column: auto;
+  max-width: none;
+}
+
 /* Cardápio pages (QR) */
 .page-menu {
   background:

@@ -53,15 +53,15 @@
     return `<li>${label}<strong>${esc(brl(item.price))}</strong></li>`;
   }
 
-  function cardHtml(card, single) {
-    const extraClass = single ? " size-card--single" : "";
+  function cardHtml(card, anchorId) {
     const desc = card.desc ? `<p>${esc(card.desc)}</p>` : "";
     const img = card.image
       ? `<img src="${esc(card.image)}" alt="${esc(card.alt || card.name)}" />`
       : "";
     const items = (card.items || []).map(itemHtml).join("");
     const tags = tagsHtml(card.tags);
-    return `<article class="size-card${extraClass}">
+    const idAttr = anchorId ? ` id="${esc(anchorId)}"` : "";
+    return `<article class="size-card"${idAttr}>
       ${img}
       <div>
         <h3>${esc(card.name)}</h3>
@@ -74,16 +74,29 @@
 
   function categorySection(category) {
     const cards = category.cards || [];
-    const single = cards.length === 1;
-    const extraClass = category.id === "cafeteria" || category.id === "tamanhos" ? " tamanhos" : "";
-    return `<section class="menu-block${extraClass}" id="${esc(category.id)}">
+    return `<section class="menu-block tamanhos" id="${esc(category.id)}">
       <div class="section-head">
         ${category.eyebrow ? `<p class="eyebrow">${esc(category.eyebrow)}</p>` : ""}
         <h2>${esc(category.title)}</h2>
       </div>
       <div class="size-grid">
-        ${cards.map((card) => cardHtml(card, single)).join("")}
+        ${cards.map(cardHtml).join("")}
       </div>
+    </section>`;
+  }
+
+  function extrasSection(categories) {
+    if (!categories.length) return "";
+    const cards = categories
+      .flatMap((category) => (category.cards || []).map((card, index) => cardHtml(card, index === 0 ? category.id : "")))
+      .join("");
+    const title = categories.map((category) => category.title).join(" e ");
+    return `<section class="menu-block tamanhos">
+      <div class="section-head">
+        <p class="eyebrow">Além do gelato</p>
+        <h2>${esc(title)}</h2>
+      </div>
+      <div class="size-grid">${cards}</div>
     </section>`;
   }
 
@@ -106,8 +119,10 @@
   }
 
   function renderStore(store) {
-    const categories = (store.categories || []).map(categorySection).join("");
-    return `${flavorsSection(store)}${categories}${storeSection(store)}`;
+    const categories = store.categories || [];
+    const sizes = categories.filter((category) => category.id === "tamanhos").map(categorySection).join("");
+    const extras = extrasSection(categories.filter((category) => category.id !== "tamanhos"));
+    return `${flavorsSection(store)}${sizes}${extras}${storeSection(store)}`;
   }
 
   async function boot() {

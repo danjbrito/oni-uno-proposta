@@ -4,7 +4,7 @@
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-ASSET_V = "8"
+ASSET_V = "9"
 
 TEMPLATE = """<!DOCTYPE html>
 <html lang="pt-BR">
