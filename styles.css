@@ -1325,3 +1325,263 @@ ul {
     padding-inline: 1.1rem;
   }
 }
+
+.menu-empty {
+  color: var(--ink-soft);
+  padding: 1rem 0 0.25rem;
+}
+
+.proposal-bar__right {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* Gestão */
+.page-admin {
+  min-height: 100vh;
+}
+
+.admin-login {
+  min-height: calc(100vh - 3.4rem);
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+}
+
+.admin-login[hidden],
+.admin-app[hidden] {
+  display: none !important;
+}
+
+.admin-login__card {
+  width: min(28rem, 100%);
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 1.75rem 1.5rem 1.6rem;
+  box-shadow: var(--shadow);
+}
+
+.admin-login__card h1 {
+  margin: 0.2rem 0 0.6rem;
+}
+
+.admin-login__card form {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1.2rem;
+}
+
+.admin-login__card label,
+.admin-select {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.admin-login__card input,
+.admin-board input,
+.admin-board textarea,
+.admin-board select {
+  width: 100%;
+  font: inherit;
+  color: var(--ink);
+  border: 1px solid rgba(28, 23, 20, 0.14);
+  border-radius: 0.75rem;
+  padding: 0.7rem 0.8rem;
+  background: #fff;
+}
+
+.admin-error {
+  color: #b42318;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.admin-app {
+  width: min(920px, 100%);
+  margin: 0 auto;
+  padding: 1.25rem 1rem 4rem;
+}
+
+.admin-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.admin-top h1 {
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+}
+
+.admin-top__actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.admin-status {
+  min-height: 1.4rem;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  margin-bottom: 1rem;
+}
+
+.admin-status[data-kind="ok"] { color: var(--teal-deep); }
+.admin-status[data-kind="warn"] { color: var(--brand-deep); }
+.admin-status[data-kind="err"] { color: #b42318; }
+
+.admin-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.admin-tabs button {
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  background: var(--stone);
+  font-weight: 700;
+  font-size: 0.88rem;
+}
+
+.admin-tabs button.is-active {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.admin-tabs--sub {
+  margin-bottom: 1.25rem;
+}
+
+.admin-card {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 1.1rem 1rem 1.2rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(28, 23, 20, 0.06);
+}
+
+.admin-card__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: flex-start;
+  margin-bottom: 0.9rem;
+}
+
+.admin-card__head h3 {
+  font-size: 1.15rem;
+}
+
+.admin-card__head p,
+.admin-card__head h3 + p {
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+}
+
+.admin-card__tools {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.admin-flavor,
+.admin-item,
+.admin-product {
+  display: grid;
+  gap: 0.65rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid rgba(28, 23, 20, 0.08);
+}
+
+.admin-flavor {
+  grid-template-columns: auto 1fr auto;
+  align-items: start;
+}
+
+.admin-flavor:not(.is-on) {
+  opacity: 0.62;
+}
+
+.admin-flavor__fields {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.switch {
+  display: grid;
+  justify-items: center;
+  gap: 0.3rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--ink-soft);
+  min-width: 4.6rem;
+}
+
+.switch input {
+  width: 1.2rem;
+  height: 1.2rem;
+  accent-color: var(--teal);
+}
+
+.admin-icon {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: var(--stone);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.admin-add {
+  margin-top: 0.65rem;
+}
+
+.admin-product {
+  grid-template-columns: 1fr;
+}
+
+.admin-items {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.admin-item {
+  grid-template-columns: 1.2fr 1.2fr 5.5rem auto;
+  border-top: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.btn.is-dirty {
+  box-shadow: 0 0 0 3px rgba(240, 90, 47, 0.35);
+}
+
+@media (max-width: 720px) {
+  .admin-flavor,
+  .admin-item {
+    grid-template-columns: 1fr auto;
+  }
+
+  .switch {
+    grid-column: 1 / -1;
+    grid-template-columns: auto 1fr;
+    justify-items: start;
+    align-items: center;
+  }
+
+  .admin-item input[data-field="price"] {
+    grid-column: 1 / -1;
+  }
+}

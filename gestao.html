@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestão do cardápio — ONI UNO</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <link rel="stylesheet" href="styles.css?v=8" />
+</head>
+<body class="page-admin">
+  <div class="proposal-bar" role="region" aria-label="Controles da proposta">
+    <span class="proposal-bar__label">Proposta — gestão do cardápio</span>
+    <a class="proposal-bar__link" href="index.html">← Site principal</a>
+  </div>
+
+  <section class="admin-login" id="admin-login">
+    <div class="admin-login__card">
+      <img class="logo__img" src="images/logo-oni-uno.png" alt="ONI UNO ateliê de gelato" width="56" height="56" />
+      <p class="eyebrow">Acesso da equipe</p>
+      <h1>Gestão do cardápio</h1>
+      <p>Altere a vitrine do dia e os preços. Depois de salvar, o cardápio da loja atualiza neste navegador.</p>
+      <form id="login-form">
+        <label>
+          Senha
+          <input id="pin" type="password" name="password" autocomplete="current-password" required />
+        </label>
+        <p class="admin-error" id="login-error" hidden>Senha incorreta.</p>
+        <button class="btn btn--solid" type="submit">Entrar</button>
+      </form>
+    </div>
+  </section>
+
+  <div class="admin-app" id="admin-app" hidden>
+    <header class="admin-top">
+      <div>
+        <p class="eyebrow">Cardápio ao vivo</p>
+        <h1>Gestão</h1>
+      </div>
+      <div class="admin-top__actions">
+        <a class="btn btn--ghost" id="preview-link" href="cardapio-sudoeste.html" target="_blank" rel="noopener">Ver cardápio</a>
+        <button class="btn btn--solid" type="button" id="save-btn">Salvar e publicar</button>
+      </div>
+    </header>
+
+    <p class="admin-status" id="admin-status" aria-live="polite"></p>
+
+    <div class="admin-tabs" role="tablist" aria-label="Loja">
+      <button type="button" class="is-active" data-store-tab="sudoeste">Sudoeste</button>
+      <button type="button" data-store-tab="asa-norte">Asa Norte</button>
+    </div>
+
+    <div class="admin-tabs admin-tabs--sub" role="tablist" aria-label="Seção">
+      <button type="button" class="is-active" data-panel="vitrine">Vitrine</button>
+      <button type="button" data-panel="itens">Itens e preços</button>
+      <button type="button" class="btn btn--ghost" id="copy-btn">Copiar outra loja</button>
+    </div>
+
+    <div id="admin-board" class="admin-board"></div>
+  </div>
+
+  <script src="js/cardapio-store.js?v=8"></script>
+  <script src="js/gestao.js?v=8"></script>
+</body>
+</html>

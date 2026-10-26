@@ -1,267 +1,10 @@
 #!/usr/bin/env python3
-"""Generate store-specific cardápio pages from a shared template."""
+"""Generate store-specific cardápio shells. Content lives in data/cardapio.json."""
 
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-
-SABORES = """
-        <section class="menu-block" id="sabores">
-          <div class="section-head">
-            <p class="eyebrow">Na vitrine hoje</p>
-            <h2>Sabores</h2>
-            <p>Natural de verdade — conservado apenas pelo frio. Sujeitos à disponibilidade do dia.</p>
-          </div>
-
-          <h3 class="menu-group">À base de leite</h3>
-          <p class="menu-group__lead">Cremosos, intensos e produzidos com leite fresco e ingredientes naturais.</p>
-          <div class="flavor-grid">
-            <article class="flavor">
-              <h3>Chocolate branco com caramelo e crocante</h3>
-              <p>Chocolate branco, calda de caramelo salgado e crocante de amêndoas.</p>
-              <span class="tag">castanhas</span>
-            </article>
-            <article class="flavor">
-              <h3>Casadinho</h3>
-              <p>Fior di latte mesclado com brigadeiro de panela — chocolate e branco.</p>
-            </article>
-            <article class="flavor">
-              <h3>Fior di Latte</h3>
-              <p>Leite e creme de leite fresco. O clássico que combina com tudo.</p>
-            </article>
-            <article class="flavor">
-              <h3>Paçoca</h3>
-              <p>Amendoim com farofinha de paçoca.</p>
-              <span class="tag">amendoim</span>
-            </article>
-            <article class="flavor">
-              <h3>Doce de leite</h3>
-              <p>Sorvete de doce de leite meeesmo, bem mineiro.</p>
-            </article>
-            <article class="flavor">
-              <h3>Tapioca</h3>
-              <p>Tapioca granulada com um toque de coco.</p>
-            </article>
-            <article class="flavor">
-              <h3>Flocos</h3>
-              <p>Fior di latte com flocos de chocolate meio amargo.</p>
-            </article>
-            <article class="flavor">
-              <h3>Coco</h3>
-              <p>Coco com (muitos) pedaços de coco fresco.</p>
-            </article>
-            <article class="flavor">
-              <h3>Chocolate</h3>
-              <p>Leite, creme de leite fresco e chocolate nobre.</p>
-            </article>
-            <article class="flavor">
-              <h3>Banoffee</h3>
-              <p>Banana, doce de leite e farofinha de biscoito.</p>
-              <span class="tag">glúten</span>
-            </article>
-            <article class="flavor">
-              <h3>Capuccino</h3>
-              <p>Café mesclado com doce de leite cremoso e flocos de chocolate.</p>
-            </article>
-            <article class="flavor">
-              <h3>Cheesecake de morango</h3>
-              <p>Cream cheese, massa de torta e geleia artesanal da casa.</p>
-              <span class="tag">glúten</span>
-            </article>
-            <article class="flavor">
-              <h3>Gianduia</h3>
-              <p>Chocolate com avelã — aquele bombom dourado, sabe?</p>
-              <span class="tag">castanhas</span>
-            </article>
-            <article class="flavor">
-              <h3>Pistache</h3>
-              <p>Cremoso, aveludado, levemente tostado.</p>
-              <span class="tag">castanhas</span>
-            </article>
-            <article class="flavor">
-              <h3>Iogurte com calda de mirtilo</h3>
-              <p>Iogurte fresco com calda de mirtilo.</p>
-            </article>
-          </div>
-
-          <h3 class="menu-group">À base de água</h3>
-          <p class="menu-group__lead">Leves, refrescantes e livres de ingredientes de origem animal.</p>
-          <div class="flavor-grid">
-            <article class="flavor">
-              <h3>Frutas Vermelhas</h3>
-              <p>Sorbet de amora, framboesa e morango.</p>
-              <span class="tag tag--teal">vegano</span>
-            </article>
-            <article class="flavor">
-              <h3>Chocolate Sorbetto</h3>
-              <p>Cacau intenso, água e açúcar.</p>
-              <span class="tag tag--teal">vegano</span>
-            </article>
-            <article class="flavor">
-              <h3>Cajá</h3>
-              <p>Sorbet de cajá puro.</p>
-              <span class="tag tag--teal">vegano</span>
-            </article>
-            <article class="flavor">
-              <h3>Abacaxi e caju</h3>
-              <p>Sorbet de abacaxi com caju.</p>
-              <span class="tag tag--teal">vegano</span>
-            </article>
-            <article class="flavor">
-              <h3>Limão com manjericão</h3>
-              <p>Acidez do limão com o aroma do manjericão fresco.</p>
-              <span class="tag tag--teal">vegano</span>
-            </article>
-            <article class="flavor">
-              <h3>Manga com maracujá</h3>
-              <p>Combinação tropical, leve e intensa.</p>
-              <span class="tag tag--teal">vegano</span>
-            </article>
-          </div>
-
-          <h3 class="menu-group">Diet</h3>
-          <p class="menu-group__lead">Feito para quem busca equilíbrio, sem abrir mão do sabor.</p>
-          <div class="flavor-grid flavor-grid--compact">
-            <article class="flavor"><h3>Coco Diet</h3></article>
-            <article class="flavor"><h3>Café Diet</h3></article>
-            <article class="flavor"><h3>Paçoca Diet</h3><span class="tag">amendoim</span></article>
-            <article class="flavor"><h3>Fior di latte Diet</h3></article>
-            <article class="flavor"><h3>Chocolate Diet</h3></article>
-            <article class="flavor"><h3>Morango Diet</h3></article>
-          </div>
-        </section>
-"""
-
-TAMANHOS = """
-        <section class="menu-block tamanhos" id="tamanhos">
-          <div class="section-head">
-            <p class="eyebrow">Como pedir</p>
-            <h2>Tamanhos e preços</h2>
-          </div>
-          <div class="size-grid">
-            <article class="size-card">
-              <img src="images/copinho.jpg" alt="Copinho ONI UNO com gelato e biscoito waffle" />
-              <div>
-                <h3>Copinhos</h3>
-                <p>Até 3 sabores + biscoito artesanal</p>
-                <ul>
-                  <li><span>Pequeno 125g</span><strong>R$ 16</strong></li>
-                  <li><span>Médio 150g</span><strong>R$ 18</strong></li>
-                  <li><span>Grande 200g</span><strong>R$ 20</strong></li>
-                </ul>
-              </div>
-            </article>
-            <article class="size-card">
-              <img src="images/casquinha.jpg" alt="Casquinhas artesanais da gelateria" />
-              <div>
-                <h3>Casquinhas</h3>
-                <p>Até 2 sabores · feitas na gelateria · 150g</p>
-                <ul>
-                  <li><span>Tradicional</span><strong>R$ 21</strong></li>
-                  <li><span>Com Nutella</span><strong>R$ 24</strong></li>
-                </ul>
-              </div>
-            </article>
-            <article class="size-card">
-              <img src="images/para-levar.jpg" alt="Embalagens ONI UNO para levar com gelato e biscoitos" />
-              <div>
-                <h3>Para levar</h3>
-                <p>Até 3 sabores + biscoitos da casa</p>
-                <ul>
-                  <li>
-                    <div>
-                      <span>½ kg (690ml)</span>
-                      <small>Acompanha pacote com 6 biscoitos</small>
-                    </div>
-                    <strong>R$ 55</strong>
-                  </li>
-                  <li>
-                    <div>
-                      <span>1 kg (1300ml)</span>
-                      <small>Acompanha pacote com 12 biscoitos</small>
-                    </div>
-                    <strong>R$ 95</strong>
-                  </li>
-                </ul>
-              </div>
-            </article>
-            <article class="size-card">
-              <img src="images/picoles.jpg" alt="Criança sorrindo com picolé" />
-              <div>
-                <h3>Picolés</h3>
-                <p>Para os pequenos — e para os pets</p>
-                <ul>
-                  <li>
-                    <div>
-                      <span>Picolé bebê</span>
-                      <small>100% frutas, sem açúcar, corantes ou conservantes</small>
-                    </div>
-                    <strong>R$ 6</strong>
-                  </li>
-                  <li>
-                    <div>
-                      <span>geLate</span>
-                      <small>Para pets · renda para a ONG Resgate Noroeste</small>
-                    </div>
-                    <strong>R$ 5</strong>
-                  </li>
-                </ul>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section class="menu-block" id="sobremesas">
-          <div class="section-head">
-            <p class="eyebrow">Doce da casa</p>
-            <h2>Sobremesas</h2>
-          </div>
-          <div class="size-grid">
-            <article class="size-card size-card--single">
-              <img src="images/sobremesas.jpg" alt="Sobremesas em camadas da ONI UNO" />
-              <div>
-                <h3>Brownie</h3>
-                <p>Artesanal, servido quentinho com uma bola de Fior di latte e calda de chocolate cremosa.</p>
-                <ul>
-                  <li><span>Brownie com gelato</span><strong>R$ 25</strong></li>
-                </ul>
-                <p class="size-tags"><span class="tag">castanhas</span><span class="tag">glúten</span></p>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section class="menu-block tamanhos" id="cafeteria">
-          <div class="section-head">
-            <p class="eyebrow">Para acompanhar</p>
-            <h2>Cafeteria</h2>
-          </div>
-          <div class="size-grid">
-            <article class="size-card size-card--single">
-              <img src="images/cafeteria.jpg" alt="Café com latte art" />
-              <div>
-                <h3>Bebidas</h3>
-                <ul>
-                  <li>
-                    <div>
-                      <span>Café espresso</span>
-                      <small>Servido com uma mini-bola de gelato</small>
-                    </div>
-                    <strong>R$ 7</strong>
-                  </li>
-                  <li>
-                    <div>
-                      <span>Água</span>
-                      <small>Com gás ou sem gás</small>
-                    </div>
-                    <strong>R$ 5</strong>
-                  </li>
-                </ul>
-              </div>
-            </article>
-          </div>
-        </section>
-"""
+ASSET_V = "8"
 
 TEMPLATE = """<!DOCTYPE html>
 <html lang="pt-BR">
@@ -275,9 +18,9 @@ TEMPLATE = """<!DOCTYPE html>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <link rel="stylesheet" href="styles.css?v=7" />
+  <link rel="stylesheet" href="styles.css?v={v}" />
 </head>
-<body class="page-menu">
+<body class="page-menu" data-store="{id}">
   <div class="proposal-bar" role="region" aria-label="Controles da proposta">
     <span class="proposal-bar__label">Proposta — cardápio {name}</span>
     <a class="proposal-bar__link" href="index.html">← Site principal</a>
@@ -307,23 +50,11 @@ TEMPLATE = """<!DOCTYPE html>
         <p class="eyebrow">Cardápio da loja</p>
         <h1>{name}</h1>
       </section>
-{sabores}
-{tamanhos}
-
-      <section class="menu-block" id="loja">
-        <div class="section-head">
-          <p class="eyebrow">Visite</p>
-          <h2>{name}</h2>
-        </div>
-        <p class="menu-hero__addr">{address}</p>
-        <ul class="store__hours menu-hero__hours">
-{hours}
-        </ul>
-        <div class="store__actions">
-          <a class="btn btn--solid" href="{maps}" target="_blank" rel="noopener">Como chegar</a>
-          <a class="btn btn--ifood" href="{ifood}" target="_blank" rel="noopener">Pedir no iFood</a>
-        </div>
-      </section>
+      <div id="cardapio-root">
+        <section class="menu-block">
+          <p class="menu-empty">Carregando cardápio…</p>
+        </section>
+      </div>
     </main>
 
     <footer class="site-footer">
@@ -337,37 +68,22 @@ TEMPLATE = """<!DOCTYPE html>
     </footer>
   </div>
 
-  <script src="script.js?v=7"></script>
+  <script src="script.js?v={v}"></script>
+  <script src="js/cardapio-store.js?v={v}"></script>
+  <script src="js/cardapio-render.js?v={v}"></script>
 </body>
 </html>
 """
 
 STORES = [
-    {
-        "filename": "cardapio-sudoeste.html",
-        "name": "Sudoeste",
-        "address": "CLSW 103 Bloco B Loja 1 — Subsolo",
-        "hours": """          <li><span>Segunda</span><span>12h – 18h</span></li>
-          <li><span>Terça a domingo</span><span>12h – 19h</span></li>""",
-        "maps": "https://maps.google.com/?q=CLSW+103+Bloco+B+Loja+1+Sudoeste+Brasília",
-        "ifood": "https://www.ifood.com.br/delivery/brasilia-df/oni-uno-gelato---sorvete-sudoeste-setor-sudoeste/a16ed348-624a-4c3f-95b3-22ea90a01055",
-    },
-    {
-        "filename": "cardapio-asa-norte.html",
-        "name": "Asa Norte",
-        "address": "CLN 303 Bloco A Loja 16",
-        "hours": """          <li><span>Terça</span><span>12h – 18h</span></li>
-          <li><span>Quarta a domingo</span><span>12h – 20h</span></li>
-          <li><span>Segunda</span><span>Fechado</span></li>""",
-        "maps": "https://maps.google.com/?q=CLN+303+Bloco+A+Loja+16+Asa+Norte+Brasília",
-        "ifood": "https://www.ifood.com.br/delivery/brasilia-df/oni-uno-gelato---sorvete-asa-norte-asa-norte/f6c8bb5d-3c3e-4d44-b9ca-97238064ccbe",
-    },
+    {"id": "sudoeste", "filename": "cardapio-sudoeste.html", "name": "Sudoeste"},
+    {"id": "asa-norte", "filename": "cardapio-asa-norte.html", "name": "Asa Norte"},
 ]
 
 
 def main():
     for store in STORES:
-        html = TEMPLATE.format(sabores=SABORES, tamanhos=TAMANHOS, **store)
+        html = TEMPLATE.format(v=ASSET_V, **store)
         path = ROOT / store["filename"]
         path.write_text(html, encoding="utf-8")
         print("wrote", path.name, path.stat().st_size)

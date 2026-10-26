@@ -11,6 +11,16 @@ Páginas pensadas para QR code no balcão:
 
 O site principal (`index.html`) aponta para esses cardápios em vez de listar sabores e preços.
 
+## Gestão online
+
+A página `gestao.html` (link **Gestão do cardápio** na barra da proposta) permite à equipe:
+
+- ligar e desligar sabores da vitrine de cada loja
+- incluir, editar ou remover sabores
+- ajustar nomes, descrições e preços de tamanhos, sobremesas e cafeteria
+
+As alterações aparecem na hora nas páginas de cardápio deste navegador, sem gerar HTML de novo. Senha de acesso: pedir à equipe da proposta.
+
 ## Como visualizar
 
 Abra `index.html` no navegador, ou sirva a pasta localmente:
