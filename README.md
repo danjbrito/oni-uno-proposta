@@ -2,6 +2,15 @@
 
 Proposta visual de redesign do site institucional da ONI UNO (ateliê de gelato), com versões **computador** e **mobile**.
 
+## Cardápios por loja (QR)
+
+Páginas pensadas para QR code no balcão:
+
+- Sudoeste: `cardapio-sudoeste.html`
+- Asa Norte: `cardapio-asa-norte.html`
+
+O site principal (`index.html`) aponta para esses cardápios em vez de listar sabores e preços.
+
 ## Como visualizar
 
 Abra `index.html` no navegador, ou sirva a pasta localmente:

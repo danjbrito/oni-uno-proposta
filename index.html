@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <link rel="stylesheet" href="styles.css?v=5" />
+  <link rel="stylesheet" href="styles.css?v=6" />
 </head>
 <body>
   <div class="proposal-bar" role="region" aria-label="Controles da proposta">
@@ -29,8 +29,7 @@
 
         <nav class="nav" aria-label="Principal">
           <a href="#manifesto">Manifesto</a>
-          <a href="#sabores">Sabores</a>
-          <a href="#tamanhos">Cardápio</a>
+          <a href="#cardapio">Cardápio</a>
           <a href="#experiencia">Experiência</a>
           <a href="#lojas">Lojas</a>
           <a href="#parceiros">Parceiros</a>
@@ -47,8 +46,7 @@
 
       <div class="mobile-nav" hidden>
         <a href="#manifesto">Manifesto</a>
-        <a href="#sabores">Sabores</a>
-        <a href="#tamanhos">Cardápio</a>
+        <a href="#cardapio">Cardápio</a>
         <a href="#experiencia">Experiência</a>
         <a href="#lojas">Lojas</a>
         <a href="#parceiros">Parceiros</a>
@@ -68,7 +66,7 @@
             </h1>
             <p class="hero__lead">Gelato artesanal em pequena escala. Natural de verdade — conservado apenas pelo frio.</p>
             <div class="hero__cta">
-              <a class="btn btn--solid btn--lg" href="#sabores">Ver sabores</a>
+              <a class="btn btn--solid btn--lg" href="#cardapio">Ver cardápio</a>
               <a class="btn btn--light btn--lg" href="#lojas">Asa Norte &amp; Sudoeste</a>
             </div>
           </div>
@@ -93,226 +91,36 @@
           </blockquote>
         </section>
 
-        <section class="sabores" id="sabores">
+        <section class="cardapio-hub" id="cardapio">
           <div class="section-head reveal">
-            <p class="eyebrow">Cardápio vivo</p>
-            <h2>Sabores que mudam com a estação</h2>
-            <p>À base de leite, sorbetes de água e opções diet — sempre frescos, sempre da casa.</p>
+            <p class="eyebrow">Cardápio por loja</p>
+            <h2>Cada ateliê tem o seu</h2>
+            <p>Sabores mudam com a vitrine. No balcão, o QR code abre o cardápio da loja — sabores, tamanhos, sobremesas e cafeteria.</p>
           </div>
 
-          <div class="flavor-tabs reveal" role="tablist" aria-label="Categorias de sabores">
-            <button type="button" class="flavor-tab is-active" role="tab" aria-selected="true" data-panel="leite">À base de leite</button>
-            <button type="button" class="flavor-tab" role="tab" aria-selected="false" data-panel="agua">À base de água</button>
-            <button type="button" class="flavor-tab" role="tab" aria-selected="false" data-panel="diet">Diet</button>
-          </div>
-
-          <div class="flavor-panels">
-            <div class="flavor-panel is-active" id="panel-leite" role="tabpanel">
-              <div class="flavor-grid">
-                <article class="flavor">
-                  <h3>Chocolate branco com caramelo e crocante</h3>
-                  <p>Chocolate branco, calda de caramelo salgado e crocante de amêndoas.</p>
-                  <span class="tag">castanhas</span>
-                </article>
-                <article class="flavor">
-                  <h3>Casadinho</h3>
-                  <p>Fior di latte mesclado com brigadeiro de panela — chocolate e branco.</p>
-                </article>
-                <article class="flavor">
-                  <h3>Fior di Latte</h3>
-                  <p>Leite e creme de leite fresco. O clássico que combina com tudo.</p>
-                </article>
-                <article class="flavor">
-                  <h3>Paçoca</h3>
-                  <p>Amendoim com farofinha de paçoca.</p>
-                  <span class="tag">amendoim</span>
-                </article>
-                <article class="flavor">
-                  <h3>Pistache</h3>
-                  <p>Cremoso, aveludado, levemente tostado.</p>
-                  <span class="tag">castanhas</span>
-                </article>
-                <article class="flavor">
-                  <h3>Gianduia</h3>
-                  <p>Chocolate com avelã — aquele bombom dourado, sabe?</p>
-                  <span class="tag">castanhas</span>
-                </article>
-                <article class="flavor">
-                  <h3>Banoffee</h3>
-                  <p>Banana, doce de leite e farofinha de biscoito.</p>
-                  <span class="tag">glúten</span>
-                </article>
-                <article class="flavor">
-                  <h3>Cheesecake de morango</h3>
-                  <p>Cream cheese, massa de torta e geleia artesanal da casa.</p>
-                  <span class="tag">glúten</span>
-                </article>
-              </div>
-            </div>
-
-            <div class="flavor-panel" id="panel-agua" role="tabpanel" hidden>
-              <div class="flavor-grid">
-                <article class="flavor">
-                  <h3>Frutas Vermelhas</h3>
-                  <p>Sorbet de amora, framboesa e morango.</p>
-                  <span class="tag tag--teal">vegano</span>
-                </article>
-                <article class="flavor">
-                  <h3>Manga com maracujá</h3>
-                  <p>Combinação tropical, leve e intensa.</p>
-                  <span class="tag tag--teal">vegano</span>
-                </article>
-                <article class="flavor">
-                  <h3>Abacaxi e caju</h3>
-                  <p>Sorbet de abacaxi com caju.</p>
-                  <span class="tag tag--teal">vegano</span>
-                </article>
-                <article class="flavor">
-                  <h3>Cajá</h3>
-                  <p>Sorbet de cajá puro.</p>
-                  <span class="tag tag--teal">vegano</span>
-                </article>
-                <article class="flavor">
-                  <h3>Chocolate Sorbetto</h3>
-                  <p>Cacau intenso, água e açúcar.</p>
-                  <span class="tag tag--teal">vegano</span>
-                </article>
-              </div>
-            </div>
-
-            <div class="flavor-panel" id="panel-diet" role="tabpanel" hidden>
-              <p class="flavor-note">Feito para quem busca equilíbrio, sem abrir mão do sabor.</p>
-              <div class="flavor-grid flavor-grid--compact">
-                <article class="flavor"><h3>Coco Diet</h3></article>
-                <article class="flavor"><h3>Café Diet</h3></article>
-                <article class="flavor"><h3>Paçoca Diet</h3><span class="tag">amendoim</span></article>
-                <article class="flavor"><h3>Fior di latte Diet</h3></article>
-                <article class="flavor"><h3>Chocolate Diet</h3></article>
-                <article class="flavor"><h3>Morango Diet</h3></article>
-              </div>
-            </div>
-          </div>
-
-          <figure class="sabores__visual reveal">
-            <img src="images/sabores-bowls.jpg" alt="Seleção de sabores ONI UNO em potinhos de vidro" />
-          </figure>
-        </section>
-
-        <section class="tamanhos" id="tamanhos">
-          <div class="section-head reveal">
-            <p class="eyebrow">Cardápio</p>
-            <h2>Escolha o seu jeito</h2>
-            <p>Copinhos, casquinhas, para levar, picolés, sobremesas e bebidas da casa.</p>
-          </div>
-
-          <div class="size-grid">
-            <article class="size-card">
-              <img src="images/copinho.jpg" alt="Copinho ONI UNO com gelato e biscoito waffle" />
+          <div class="store-grid reveal">
+            <article class="store store--menu">
+              <img src="images/copinho.jpg" alt="Gelato da loja Sudoeste" />
               <div>
-                <h3>Copinhos</h3>
-                <p>Até 3 sabores + biscoito artesanal</p>
-                <ul>
-                  <li><span>Pequeno 125g</span><strong>R$ 16</strong></li>
-                  <li><span>Médio 150g</span><strong>R$ 18</strong></li>
-                  <li><span>Grande 200g</span><strong>R$ 20</strong></li>
-                </ul>
+                <h3>Sudoeste</h3>
+                <p class="store__addr">CLSW 103 Bloco B Loja 1 — Subsolo</p>
+                <p class="qr-hint">QR: <code>cardapio-sudoeste.html</code></p>
+                <div class="store__actions">
+                  <a class="btn btn--solid" href="cardapio-sudoeste.html">Ver cardápio</a>
+                  <a class="btn btn--ifood" href="https://www.ifood.com.br/delivery/brasilia-df/oni-uno-gelato---sorvete-sudoeste-setor-sudoeste/a16ed348-624a-4c3f-95b3-22ea90a01055" target="_blank" rel="noopener">iFood</a>
+                </div>
               </div>
             </article>
-            <article class="size-card">
-              <img src="images/casquinha.jpg" alt="Casquinhas artesanais da gelateria" />
+            <article class="store store--menu">
+              <img src="images/lifestyle-mesa.jpg" alt="Gelato da loja Asa Norte" />
               <div>
-                <h3>Casquinhas</h3>
-                <p>Até 2 sabores · feitas na gelateria · 150g</p>
-                <ul>
-                  <li><span>Tradicional</span><strong>R$ 21</strong></li>
-                  <li><span>Com Nutella</span><strong>R$ 24</strong></li>
-                </ul>
-              </div>
-            </article>
-            <article class="size-card">
-              <img src="images/para-levar.jpg" alt="Embalagens ONI UNO para levar com gelato e biscoitos" />
-              <div>
-                <h3>Para levar</h3>
-                <p>Até 3 sabores + biscoitos da casa</p>
-                <ul>
-                  <li>
-                    <div>
-                      <span>½ kg (690ml)</span>
-                      <small>Acompanha pacote com 6 biscoitos</small>
-                    </div>
-                    <strong>R$ 55</strong>
-                  </li>
-                  <li>
-                    <div>
-                      <span>1 kg (1300ml)</span>
-                      <small>Acompanha pacote com 12 biscoitos</small>
-                    </div>
-                    <strong>R$ 95</strong>
-                  </li>
-                </ul>
-              </div>
-            </article>
-            <article class="size-card">
-              <img src="images/picoles.jpg" alt="Criança sorrindo com picolé" />
-              <div>
-                <h3>Picolés</h3>
-                <p>Para os pequenos — e para os pets</p>
-                <ul>
-                  <li>
-                    <div>
-                      <span>Picolé bebê</span>
-                      <small>100% frutas, sem açúcar, corantes ou conservantes</small>
-                    </div>
-                    <strong>R$ 6</strong>
-                  </li>
-                  <li>
-                    <div>
-                      <span>geLate</span>
-                      <small>Para pets · renda para a ONG Resgate Noroeste</small>
-                    </div>
-                    <strong>R$ 5</strong>
-                  </li>
-                </ul>
-              </div>
-            </article>
-            <article class="size-card">
-              <img src="images/sobremesas.jpg" alt="Sobremesas em camadas da ONI UNO" />
-              <div>
-                <h3>Sobremesas</h3>
-                <p>Doce da casa com o nosso gelato</p>
-                <ul>
-                  <li>
-                    <div>
-                      <span>Brownie</span>
-                      <small>Quentinho com Fior di latte e calda de chocolate</small>
-                    </div>
-                    <strong>R$ 25</strong>
-                  </li>
-                </ul>
-                <p class="size-tags"><span class="tag">castanhas</span><span class="tag">glúten</span></p>
-              </div>
-            </article>
-            <article class="size-card">
-              <img src="images/cafeteria.jpg" alt="Café com latte art" />
-              <div>
-                <h3>Cafeteria</h3>
-                <p>Para acompanhar o gelato</p>
-                <ul>
-                  <li>
-                    <div>
-                      <span>Café espresso</span>
-                      <small>Servido com uma mini-bola de gelato</small>
-                    </div>
-                    <strong>R$ 7</strong>
-                  </li>
-                  <li>
-                    <div>
-                      <span>Água</span>
-                      <small>Com gás ou sem gás</small>
-                    </div>
-                    <strong>R$ 5</strong>
-                  </li>
-                </ul>
+                <h3>Asa Norte</h3>
+                <p class="store__addr">CLN 303 Bloco A Loja 16</p>
+                <p class="qr-hint">QR: <code>cardapio-asa-norte.html</code></p>
+                <div class="store__actions">
+                  <a class="btn btn--solid" href="cardapio-asa-norte.html">Ver cardápio</a>
+                  <a class="btn btn--ifood" href="https://www.ifood.com.br/delivery/brasilia-df/oni-uno-gelato---sorvete-asa-norte-asa-norte/f6c8bb5d-3c3e-4d44-b9ca-97238064ccbe" target="_blank" rel="noopener">iFood</a>
+                </div>
               </div>
             </article>
           </div>
@@ -367,7 +175,8 @@
                 <li><span>Terça a domingo</span><span>12h – 19h</span></li>
               </ul>
               <div class="store__actions">
-                <a class="btn btn--solid" href="https://maps.google.com/?q=CLSW+103+Bloco+B+Loja+1+Sudoeste+Brasília" target="_blank" rel="noopener">Como chegar</a>
+                <a class="btn btn--solid" href="cardapio-sudoeste.html">Ver cardápio</a>
+                <a class="btn btn--ghost" href="https://maps.google.com/?q=CLSW+103+Bloco+B+Loja+1+Sudoeste+Brasília" target="_blank" rel="noopener">Como chegar</a>
                 <a class="btn btn--ifood" href="https://www.ifood.com.br/delivery/brasilia-df/oni-uno-gelato---sorvete-sudoeste-setor-sudoeste/a16ed348-624a-4c3f-95b3-22ea90a01055" target="_blank" rel="noopener">Pedir no iFood</a>
               </div>
             </article>
@@ -380,7 +189,8 @@
                 <li><span>Segunda</span><span>Fechado</span></li>
               </ul>
               <div class="store__actions">
-                <a class="btn btn--solid" href="https://maps.google.com/?q=CLN+303+Bloco+A+Loja+16+Asa+Norte+Brasília" target="_blank" rel="noopener">Como chegar</a>
+                <a class="btn btn--solid" href="cardapio-asa-norte.html">Ver cardápio</a>
+                <a class="btn btn--ghost" href="https://maps.google.com/?q=CLN+303+Bloco+A+Loja+16+Asa+Norte+Brasília" target="_blank" rel="noopener">Como chegar</a>
                 <a class="btn btn--ifood" href="https://www.ifood.com.br/delivery/brasilia-df/oni-uno-gelato---sorvete-asa-norte-asa-norte/f6c8bb5d-3c3e-4d44-b9ca-97238064ccbe" target="_blank" rel="noopener">Pedir no iFood</a>
               </div>
             </article>
@@ -404,6 +214,8 @@
           <img class="logo__img" src="images/logo-oni-uno.png" alt="ONI UNO ateliê de gelato" width="56" height="56" />
         </div>
         <div class="footer__meta">
+          <a href="cardapio-sudoeste.html">Cardápio Sudoeste</a>
+          <a href="cardapio-asa-norte.html">Cardápio Asa Norte</a>
           <a href="mailto:contato@oni-Uno.com.br">contato@oni-Uno.com.br</a>
           <a href="https://www.instagram.com/oniunogelato" target="_blank" rel="noopener">@oniunogelato</a>
         </div>
@@ -412,6 +224,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=5"></script>
+  <script src="script.js?v=6"></script>
 </body>
 </html>

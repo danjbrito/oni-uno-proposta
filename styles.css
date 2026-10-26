@@ -958,7 +958,8 @@ ul {
   .tamanhos,
   .experiencia,
   .lojas,
-  .parceiros {
+  .parceiros,
+  .cardapio-hub {
     padding-inline: 1.1rem;
   }
 
@@ -1060,7 +1061,8 @@ ul {
 .viewport-shell[data-viewport="mobile"] .tamanhos,
 .viewport-shell[data-viewport="mobile"] .experiencia,
 .viewport-shell[data-viewport="mobile"] .lojas,
-.viewport-shell[data-viewport="mobile"] .parceiros {
+.viewport-shell[data-viewport="mobile"] .parceiros,
+.viewport-shell[data-viewport="mobile"] .cardapio-hub {
   padding-inline: 1.1rem;
 }
 
@@ -1109,5 +1111,217 @@ ul {
     transition: none !important;
     opacity: 1 !important;
     transform: none !important;
+  }
+}
+
+/* Homepage: cardápio por loja */
+.cardapio-hub {
+  padding: clamp(3rem, 7vw, 5.5rem) clamp(1.5rem, 5vw, 4rem);
+}
+
+.store--menu {
+  padding: 0;
+  overflow: hidden;
+}
+
+.store--menu img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.store--menu > div {
+  padding: 1.35rem 1.5rem 1.5rem;
+}
+
+.qr-hint {
+  margin: 0 0 1rem;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+.qr-hint code {
+  font-size: 0.78rem;
+  background: rgba(28, 23, 20, 0.06);
+  padding: 0.12rem 0.4rem;
+  border-radius: 0.35rem;
+}
+
+.proposal-bar__link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #f5efe7;
+  opacity: 0.9;
+}
+
+.size-card--single {
+  grid-column: 1 / -1;
+  max-width: 52rem;
+}
+
+/* Cardápio pages (QR) */
+.page-menu {
+  background:
+    radial-gradient(900px 420px at 10% -10%, rgba(42, 168, 160, 0.12), transparent 55%),
+    linear-gradient(180deg, #f3efe8 0%, #ebe4da 100%);
+}
+
+.page-menu .proposal-bar {
+  position: relative;
+}
+
+.page-menu .proposal-bar__toggles {
+  display: none;
+}
+
+.menu-shell {
+  width: min(860px, 100%);
+  margin: 0 auto;
+  background: var(--paper);
+  min-height: 100vh;
+  box-shadow: var(--shadow);
+}
+
+.page-menu .proposal-bar + .menu-shell {
+  /* sits under sticky proposal bar */
+}
+
+.menu-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.menu-header__store {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.92rem;
+}
+
+.menu-jump {
+  position: sticky;
+  top: var(--header-h);
+  z-index: 35;
+  display: flex;
+  gap: 0.35rem;
+  overflow-x: auto;
+  padding: 0.55rem 1rem;
+  background: rgba(247, 244, 239, 0.94);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(28, 23, 20, 0.06);
+  -webkit-overflow-scrolling: touch;
+}
+
+.menu-jump a {
+  flex: 0 0 auto;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  background: var(--stone);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.menu-hero {
+  padding: 1.75rem 1.25rem 1.5rem;
+}
+
+.menu-hero h1 {
+  font-size: clamp(2rem, 6vw, 2.8rem);
+  margin-bottom: 0.35rem;
+}
+
+.menu-hero__addr {
+  color: var(--ink-soft);
+  margin-bottom: 1rem;
+}
+
+.menu-hero__hours {
+  max-width: 22rem;
+  margin-bottom: 1.25rem;
+}
+
+.menu-block {
+  padding: 2rem 1.25rem 2.4rem;
+}
+
+.menu-block.tamanhos {
+  padding-inline: 1.25rem;
+}
+
+.menu-group {
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--terracotta-deep);
+  margin: 1.75rem 0 0.35rem;
+}
+
+.menu-group__lead {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  margin-bottom: 0.75rem;
+}
+
+.page-menu .flavor-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+.page-menu .size-grid {
+  grid-template-columns: 1fr;
+}
+
+.page-menu .size-card {
+  grid-template-columns: 1fr;
+  background: #fff;
+}
+
+.page-menu .size-card img {
+  height: 160px;
+  min-height: 160px;
+}
+
+.page-menu .size-card > div {
+  padding: 1.1rem 1.15rem 1.25rem;
+}
+
+@media (min-width: 720px) {
+  .menu-hero,
+  .menu-block {
+    padding-inline: 2rem;
+  }
+
+  .page-menu .flavor-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .page-menu .size-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .page-menu .size-card {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+
+  .page-menu .size-card img {
+    height: 100%;
+    min-height: 180px;
+  }
+
+  .page-menu .size-card > div {
+    padding: 1.2rem 1.2rem 1.3rem 0.2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-menu .flavor-grid,
+  .page-menu .flavor-grid--compact {
+    grid-template-columns: 1fr;
+  }
+
+  .cardapio-hub {
+    padding-inline: 1.1rem;
   }
 }
