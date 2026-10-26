@@ -275,11 +275,11 @@ TEMPLATE = """<!DOCTYPE html>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <link rel="stylesheet" href="styles.css?v=6" />
+  <link rel="stylesheet" href="styles.css?v=7" />
 </head>
 <body class="page-menu">
   <div class="proposal-bar" role="region" aria-label="Controles da proposta">
-    <span class="proposal-bar__label">Proposta — cardápio {name} (QR)</span>
+    <span class="proposal-bar__label">Proposta — cardápio {name}</span>
     <a class="proposal-bar__link" href="index.html">← Site principal</a>
   </div>
 
@@ -291,7 +291,6 @@ TEMPLATE = """<!DOCTYPE html>
       <p class="menu-header__store">{name}</p>
       <div class="header-actions">
         <a class="btn btn--ghost" href="index.html">Site</a>
-        <a class="btn btn--ifood" href="{ifood}" target="_blank" rel="noopener">iFood</a>
       </div>
     </header>
 
@@ -300,12 +299,22 @@ TEMPLATE = """<!DOCTYPE html>
       <a href="#tamanhos">Tamanhos</a>
       <a href="#sobremesas">Sobremesas</a>
       <a href="#cafeteria">Cafeteria</a>
+      <a href="#loja">Loja</a>
     </nav>
 
     <main>
       <section class="menu-hero">
         <p class="eyebrow">Cardápio da loja</p>
         <h1>{name}</h1>
+      </section>
+{sabores}
+{tamanhos}
+
+      <section class="menu-block" id="loja">
+        <div class="section-head">
+          <p class="eyebrow">Visite</p>
+          <h2>{name}</h2>
+        </div>
         <p class="menu-hero__addr">{address}</p>
         <ul class="store__hours menu-hero__hours">
 {hours}
@@ -313,12 +322,8 @@ TEMPLATE = """<!DOCTYPE html>
         <div class="store__actions">
           <a class="btn btn--solid" href="{maps}" target="_blank" rel="noopener">Como chegar</a>
           <a class="btn btn--ifood" href="{ifood}" target="_blank" rel="noopener">Pedir no iFood</a>
-          <a class="btn btn--ghost" href="{other_file}">{other_label}</a>
         </div>
-        <p class="qr-hint">QR code desta loja: <code>{filename}</code></p>
       </section>
-{sabores}
-{tamanhos}
     </main>
 
     <footer class="site-footer">
@@ -327,13 +332,12 @@ TEMPLATE = """<!DOCTYPE html>
       </div>
       <div class="footer__meta">
         <a href="index.html">Site ONI UNO</a>
-        <a href="{other_file}">Cardápio {other_name}</a>
         <a href="https://www.instagram.com/oniunogelato" target="_blank" rel="noopener">@oniunogelato</a>
       </div>
     </footer>
   </div>
 
-  <script src="script.js?v=6"></script>
+  <script src="script.js?v=7"></script>
 </body>
 </html>
 """
@@ -347,9 +351,6 @@ STORES = [
           <li><span>Terça a domingo</span><span>12h – 19h</span></li>""",
         "maps": "https://maps.google.com/?q=CLSW+103+Bloco+B+Loja+1+Sudoeste+Brasília",
         "ifood": "https://www.ifood.com.br/delivery/brasilia-df/oni-uno-gelato---sorvete-sudoeste-setor-sudoeste/a16ed348-624a-4c3f-95b3-22ea90a01055",
-        "other_file": "cardapio-asa-norte.html",
-        "other_name": "Asa Norte",
-        "other_label": "Cardápio Asa Norte",
     },
     {
         "filename": "cardapio-asa-norte.html",
@@ -360,9 +361,6 @@ STORES = [
           <li><span>Segunda</span><span>Fechado</span></li>""",
         "maps": "https://maps.google.com/?q=CLN+303+Bloco+A+Loja+16+Asa+Norte+Brasília",
         "ifood": "https://www.ifood.com.br/delivery/brasilia-df/oni-uno-gelato---sorvete-asa-norte-asa-norte/f6c8bb5d-3c3e-4d44-b9ca-97238064ccbe",
-        "other_file": "cardapio-sudoeste.html",
-        "other_name": "Sudoeste",
-        "other_label": "Cardápio Sudoeste",
     },
 ]
 
