@@ -4,7 +4,7 @@
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-ASSET_V = "9"
+ASSET_V = "13"
 
 TEMPLATE = """<!DOCTYPE html>
 <html lang="pt-BR">
@@ -23,10 +23,17 @@ TEMPLATE = """<!DOCTYPE html>
 <body class="page-menu" data-store="{id}">
   <div class="proposal-bar" role="region" aria-label="Controles da proposta">
     <span class="proposal-bar__label">Proposta — cardápio {name}</span>
-    <a class="proposal-bar__link" href="index.html">← Site principal</a>
+    <div class="proposal-bar__right">
+      <a class="proposal-bar__link" href="index.html">← Site principal</a>
+      <div class="proposal-bar__toggles" role="group" aria-label="Pré-visualizar layout">
+        <button type="button" class="proposal-bar__btn is-active" data-viewport="desktop">Computador</button>
+        <button type="button" class="proposal-bar__btn" data-viewport="mobile">Mobile</button>
+      </div>
+    </div>
   </div>
 
-  <div class="menu-shell">
+  <div class="viewport-shell" data-viewport="desktop">
+  <div class="site-frame menu-shell">
     <header class="site-header menu-header" id="topo">
       <a class="logo" href="index.html" aria-label="ONI UNO — início">
         <img class="logo__img" src="images/logo-oni-uno.png" alt="ONI UNO ateliê de gelato" width="52" height="52" />
@@ -66,6 +73,7 @@ TEMPLATE = """<!DOCTYPE html>
         <a href="https://www.instagram.com/oniunogelato" target="_blank" rel="noopener">@oniunogelato</a>
       </div>
     </footer>
+  </div>
   </div>
 
   <script src="script.js?v={v}"></script>

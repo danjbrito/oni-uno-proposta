@@ -1301,11 +1301,37 @@ body.contact-open {
 }
 
 .page-menu .proposal-bar {
-  position: relative;
+  position: sticky;
 }
 
-.page-menu .proposal-bar__toggles {
-  display: none;
+.page-menu .viewport-shell {
+  padding-top: 1.25rem;
+}
+
+.page-menu .site-frame.menu-shell {
+  width: min(860px, 100%);
+  overflow: visible;
+  min-height: calc(100vh - 6rem);
+}
+
+.page-menu .viewport-shell[data-viewport="mobile"] .site-frame.menu-shell {
+  width: min(390px, 100%);
+  min-height: 0;
+  overflow: clip;
+}
+
+.page-menu .menu-header {
+  top: 3.4rem;
+}
+
+.page-menu .menu-jump {
+  top: calc(3.4rem + var(--header-h));
+}
+
+.page-menu .viewport-shell[data-viewport="mobile"] .menu-header,
+.page-menu .viewport-shell[data-viewport="mobile"] .menu-jump {
+  position: relative;
+  top: auto;
 }
 
 .menu-shell {
@@ -1314,10 +1340,6 @@ body.contact-open {
   background: var(--paper);
   min-height: 100vh;
   box-shadow: var(--shadow);
-}
-
-.page-menu .proposal-bar + .menu-shell {
-  /* sits under sticky proposal bar */
 }
 
 .menu-header {
@@ -1458,6 +1480,44 @@ body.contact-open {
   .cardapio-hub {
     padding-inline: 1.1rem;
   }
+}
+
+.page-menu .viewport-shell[data-viewport="mobile"] .flavor-grid,
+.page-menu .viewport-shell[data-viewport="mobile"] .flavor-grid--compact {
+  grid-template-columns: 1fr;
+}
+
+.page-menu .viewport-shell[data-viewport="mobile"] .size-grid {
+  grid-template-columns: 1fr;
+}
+
+.page-menu .viewport-shell[data-viewport="mobile"] .size-card {
+  grid-template-columns: 1fr;
+  background: #fff;
+}
+
+.page-menu .viewport-shell[data-viewport="mobile"] .size-card img {
+  width: 100%;
+  height: 132px;
+  min-height: 132px;
+  max-height: 132px;
+}
+
+.page-menu .viewport-shell[data-viewport="mobile"] .size-card > div {
+  padding: 1.15rem 1.2rem 1.35rem;
+}
+
+.page-menu .viewport-shell[data-viewport="mobile"] .menu-hero,
+.page-menu .viewport-shell[data-viewport="mobile"] .menu-block {
+  padding-inline: 1.1rem;
+}
+
+.page-menu .viewport-shell[data-viewport="mobile"] .store__actions {
+  flex-direction: column;
+}
+
+.page-menu .viewport-shell[data-viewport="mobile"] .store__actions .btn {
+  width: 100%;
 }
 
 .menu-empty {

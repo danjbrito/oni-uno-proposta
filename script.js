@@ -1,4 +1,5 @@
 (() => {
+  const VIEW_KEY = "oni-proposta-viewport";
   const shell = document.querySelector(".viewport-shell");
   const viewportButtons = document.querySelectorAll(".proposal-bar__btn");
   const navToggle = document.querySelector(".nav-toggle");
@@ -7,22 +8,31 @@
   const flavorPanels = document.querySelectorAll(".flavor-panel");
   const reveals = document.querySelectorAll(".reveal");
 
+  function applyViewport(mode, scrollTop) {
+    if (!shell || (mode !== "desktop" && mode !== "mobile")) return;
+    shell.dataset.viewport = mode;
+    viewportButtons.forEach((btn) => btn.classList.toggle("is-active", btn.dataset.viewport === mode));
+    try {
+      sessionStorage.setItem(VIEW_KEY, mode);
+    } catch {
+      /* ignore private-mode quota */
+    }
+    if (mode === "desktop" && mobileNav) {
+      mobileNav.hidden = true;
+      mobileNav.classList.remove("is-open");
+      navToggle?.setAttribute("aria-expanded", "false");
+    }
+    if (scrollTop) window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  try {
+    applyViewport(sessionStorage.getItem(VIEW_KEY) || "desktop", false);
+  } catch {
+    /* ignore */
+  }
+
   viewportButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const mode = btn.dataset.viewport;
-      if (!shell || !mode) return;
-
-      shell.dataset.viewport = mode;
-      viewportButtons.forEach((b) => b.classList.toggle("is-active", b === btn));
-
-      if (mode === "desktop" && mobileNav) {
-        mobileNav.hidden = true;
-        mobileNav.classList.remove("is-open");
-        navToggle?.setAttribute("aria-expanded", "false");
-      }
-
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+    btn.addEventListener("click", () => applyViewport(btn.dataset.viewport, true));
   });
 
   navToggle?.addEventListener("click", () => {
