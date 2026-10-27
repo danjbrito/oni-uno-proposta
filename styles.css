@@ -1334,6 +1334,16 @@ body.contact-open {
   top: auto;
 }
 
+.page-menu .viewport-shell[data-viewport="mobile"] .menu-jump {
+  gap: 0.35rem;
+  padding: 0.6rem 0.9rem 0.75rem;
+}
+
+.page-menu .viewport-shell[data-viewport="mobile"] .menu-jump a {
+  padding: 0.38rem 0.7rem;
+  font-size: 0.78rem;
+}
+
 .menu-shell {
   width: min(860px, 100%);
   margin: 0 auto;
@@ -1362,13 +1372,12 @@ body.contact-open {
   top: var(--header-h);
   z-index: 35;
   display: flex;
-  gap: 0.35rem;
-  overflow-x: auto;
-  padding: 0.55rem 1rem;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0.55rem 1rem 0.7rem;
   background: rgba(247, 244, 239, 0.94);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(28, 23, 20, 0.06);
-  -webkit-overflow-scrolling: touch;
 }
 
 .menu-jump a {
@@ -1479,6 +1488,36 @@ body.contact-open {
 
   .cardapio-hub {
     padding-inline: 1.1rem;
+  }
+
+  .menu-jump {
+    gap: 0.35rem;
+    padding: 0.6rem 0.9rem 0.75rem;
+  }
+
+  .menu-jump a {
+    padding: 0.38rem 0.7rem;
+    font-size: 0.78rem;
+  }
+
+  .proposal-bar {
+    flex-wrap: wrap;
+    row-gap: 0.45rem;
+    padding: 0.55rem 0.9rem;
+  }
+
+  .proposal-bar__label {
+    flex: 1 1 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .proposal-bar__right {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
   }
 }
 
