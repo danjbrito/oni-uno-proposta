@@ -842,6 +842,134 @@ ul {
   color: #fff;
 }
 
+.contact-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+
+.contact-modal[hidden] {
+  display: none !important;
+}
+
+.contact-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(28, 23, 20, 0.55);
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+body.contact-open {
+  overflow: hidden;
+}
+
+.contact-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(34rem, calc(100vw - 1.5rem));
+  max-height: calc(100vh - 2rem);
+  overflow: auto;
+  border: 0;
+  border-radius: var(--radius);
+  padding: 0;
+  background: var(--paper);
+  box-shadow: var(--shadow);
+  color: var(--ink);
+}
+
+.contact-dialog__form {
+  position: relative;
+  padding: 1.5rem 1.35rem 1.4rem;
+}
+
+.contact-dialog__form > p:not(.eyebrow):not(.contact-dialog__status) {
+  color: var(--ink-soft);
+  margin-bottom: 1.1rem;
+}
+
+.contact-dialog__form h2 {
+  margin-bottom: 0.4rem;
+}
+
+.contact-dialog__close {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 999px;
+  background: var(--stone);
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.contact-dialog__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem 0.85rem;
+}
+
+.contact-dialog__full {
+  grid-column: 1 / -1;
+}
+
+.contact-dialog__form label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.contact-dialog__form input,
+.contact-dialog__form textarea {
+  width: 100%;
+  font: inherit;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 500;
+  color: var(--ink);
+  border: 1px solid rgba(28, 23, 20, 0.14);
+  border-radius: 0.75rem;
+  padding: 0.7rem 0.8rem;
+  background: #fff;
+}
+
+.contact-dialog__honey {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.contact-dialog__status {
+  margin: 0.85rem 0 0;
+  font-size: 0.92rem;
+}
+
+.contact-dialog__status[data-kind="ok"] { color: var(--teal-deep); }
+.contact-dialog__status[data-kind="warn"] { color: var(--brand-deep); }
+
+.contact-dialog__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1.15rem;
+}
+
+@media (max-width: 560px) {
+  .contact-dialog__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Footer */
 .site-footer {
   display: flex;

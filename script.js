@@ -85,4 +85,104 @@
   } else {
     reveals.forEach(showReveal);
   }
+
+  const CONTACT_EMAIL = "contato@oni-Uno.com.br";
+  const dialog = document.getElementById("contato-dialog");
+  const form = document.getElementById("contato-form");
+  const statusEl = document.getElementById("contato-status");
+  const submitBtn = document.getElementById("contato-submit");
+
+  const setStatus = (message, kind) => {
+    if (!statusEl) return;
+    statusEl.hidden = !message;
+    statusEl.textContent = message || "";
+    statusEl.dataset.kind = kind || "";
+  };
+
+  const openContato = () => {
+    if (!dialog || !form) return;
+    setStatus("");
+    form.reset();
+    dialog.hidden = false;
+    document.body.classList.add("contact-open");
+    window.setTimeout(() => form.elements.nome?.focus(), 20);
+  };
+
+  const closeContato = () => {
+    if (!dialog) return;
+    dialog.hidden = true;
+    document.body.classList.remove("contact-open");
+  };
+
+  document.addEventListener("click", (event) => {
+    const opener = event.target.closest("[data-open-contato]");
+    if (opener) {
+      event.preventDefault();
+      openContato();
+      return;
+    }
+    if (event.target.closest("[data-close-contato]")) {
+      event.preventDefault();
+      closeContato();
+    }
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && dialog && !dialog.hidden) closeContato();
+  });
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    if (form.elements._honey?.value) return;
+
+    const payload = {
+      Nome: form.elements.nome.value.trim(),
+      Telefone: form.elements.telefone.value.trim(),
+      "Nome da empresa": form.elements.empresa.value.trim(),
+      Email: form.elements.email.value.trim(),
+      Mensagem: form.elements.mensagem.value.trim(),
+      _subject: "Clientes / parceria — ONI UNO",
+      _template: "table",
+      _captcha: "false",
+      _replyto: form.elements.email.value.trim(),
+    };
+
+    submitBtn.disabled = true;
+    setStatus("Enviando…");
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok || data.success === "false" || data.success === false) {
+        throw new Error(data.message || `HTTP ${response.status}`);
+      }
+      const needsConfirm = String(data.message || "").toLowerCase().includes("activate");
+      if (needsConfirm) {
+        setStatus("Quase lá: confirme o primeiro envio no e-mail contato@oni-Uno.com.br.", "warn");
+      } else {
+        setStatus("Mensagem enviada. Em breve a equipe entra em contato.", "ok");
+        form.reset();
+      }
+    } catch (error) {
+      const body = [
+        `Nome: ${payload.Nome}`,
+        `Telefone: ${payload.Telefone}`,
+        `Empresa: ${payload["Nome da empresa"]}`,
+        `Email: ${payload.Email}`,
+        "",
+        payload.Mensagem,
+      ].join("\n");
+      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(payload._subject)}&body=${encodeURIComponent(body)}`;
+      setStatus("Não foi possível enviar por aqui. Abrimos o seu e-mail para concluir o envio.", "warn");
+      console.error(error);
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
 })();
