@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <link rel="stylesheet" href="styles.css?v=9" />
+  <link rel="stylesheet" href="styles.css?v=16" />
 </head>
 <body class="page-admin">
   <div class="proposal-bar" role="region" aria-label="Controles da proposta">
@@ -22,7 +22,7 @@
       <img class="logo__img" src="images/logo-oni-uno.png" alt="ONI UNO ateliê de gelato" width="56" height="56" />
       <p class="eyebrow">Acesso da equipe</p>
       <h1>Gestão do cardápio</h1>
-      <p>Altere a vitrine do dia e os preços. Depois de salvar, o cardápio da loja atualiza neste navegador.</p>
+      <p>Altere a vitrine, os preços e o horário de funcionamento. Depois de salvar, o cardápio da loja atualiza neste navegador.</p>
       <form id="login-form">
         <label>
           Senha
@@ -56,13 +56,13 @@
     <div class="admin-tabs admin-tabs--sub" role="tablist" aria-label="Seção">
       <button type="button" class="is-active" data-panel="vitrine">Vitrine</button>
       <button type="button" data-panel="itens">Itens e preços</button>
-      <button type="button" class="btn btn--ghost" id="copy-btn">Copiar outra loja</button>
+      <button type="button" data-panel="horarios">Horários</button>
     </div>
 
     <div id="admin-board" class="admin-board"></div>
   </div>
 
-  <script src="js/cardapio-store.js?v=9"></script>
-  <script src="js/gestao.js?v=9"></script>
+  <script src="js/cardapio-store.js?v=16"></script>
+  <script src="js/gestao.js?v=16"></script>
 </body>
 </html>

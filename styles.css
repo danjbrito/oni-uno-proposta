@@ -1797,13 +1797,26 @@ body.contact-open {
   align-items: center;
 }
 
+.admin-hours {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.admin-hour {
+  display: grid;
+  grid-template-columns: 1.1fr 1.4fr auto;
+  gap: 0.65rem;
+  align-items: center;
+}
+
 .btn.is-dirty {
   box-shadow: 0 0 0 3px rgba(240, 90, 47, 0.35);
 }
 
 @media (max-width: 720px) {
   .admin-flavor,
-  .admin-item {
+  .admin-item,
+  .admin-hour {
     grid-template-columns: 1fr auto;
   }
 

@@ -17,7 +17,6 @@
   const statusEl = document.getElementById("admin-status");
   const saveBtn = document.getElementById("save-btn");
   const previewLink = document.getElementById("preview-link");
-  const copyBtn = document.getElementById("copy-btn");
 
   let catalog = null;
   let storeId = "sudoeste";
@@ -39,9 +38,12 @@
   }
 
   function updatePreview() {
-    const store = currentStore();
-    previewLink.href = store.file;
-    copyBtn.textContent = storeId === "sudoeste" ? "Copiar Asa Norte" : "Copiar Sudoeste";
+    previewLink.href = currentStore().file;
+  }
+
+  function hoursOf(store) {
+    if (!Array.isArray(store.hours)) store.hours = [];
+    return store.hours;
   }
 
   function optionList(selected) {
@@ -87,6 +89,28 @@
     }).join("");
   }
 
+  function renderHours(store) {
+    const hours = hoursOf(store);
+    const rows = hours.map((hour, hourIndex) => `
+      <div class="admin-hour" data-h="${hourIndex}">
+        <input type="text" data-field="label" value="${storeApi.esc(hour.label || "")}" placeholder="Dia" />
+        <input type="text" data-field="value" value="${storeApi.esc(hour.value || "")}" placeholder="Horário ou Fechado" />
+        <button type="button" class="admin-icon" data-act="remove-hour" aria-label="Remover linha">×</button>
+      </div>
+    `).join("");
+
+    return `<section class="admin-card">
+      <header class="admin-card__head">
+        <div>
+          <h3>Funcionamento</h3>
+          <p>Aparece no fim do cardápio desta loja.</p>
+        </div>
+      </header>
+      <div class="admin-hours">${rows || `<p class="menu-empty">Nenhum horário cadastrado.</p>`}</div>
+      <button type="button" class="btn btn--ghost admin-add" data-act="add-hour">+ Linha</button>
+    </section>`;
+  }
+
   function renderItems(store) {
     return store.categories.map((category, categoryIndex) => {
       const cards = (category.cards || []).map((card, cardIndex) => {
@@ -130,7 +154,11 @@
     if (!catalog) return;
     const store = currentStore();
     updatePreview();
-    const body = panel === "vitrine" ? renderVitrine(store) : renderItems(store);
+    const body = panel === "vitrine"
+      ? renderVitrine(store)
+      : panel === "horarios"
+        ? renderHours(store)
+        : renderItems(store);
     board.innerHTML = body;
     document.querySelectorAll("[data-store-tab]").forEach((btn) => {
       btn.classList.toggle("is-active", btn.dataset.storeTab === storeId);
@@ -152,6 +180,7 @@
     const flavorRow = event.target.closest(".admin-flavor");
     const product = event.target.closest(".admin-product");
     const itemRow = event.target.closest(".admin-item");
+    const hourRow = event.target.closest(".admin-hour");
 
     if (action === "toggle" && flavorRow) {
       const group = store.flavorGroups[Number(flavorRow.dataset.g)];
@@ -213,6 +242,20 @@
       card.items.splice(Number(itemRow.dataset.i), 1);
       setDirty(true);
       render();
+      return;
+    }
+
+    if (action === "add-hour") {
+      hoursOf(store).push({ label: "Dia", value: "12h – 19h" });
+      setDirty(true);
+      render();
+      return;
+    }
+
+    if (action === "remove-hour" && hourRow) {
+      hoursOf(store).splice(Number(hourRow.dataset.h), 1);
+      setDirty(true);
+      render();
     }
   }
 
@@ -223,6 +266,13 @@
     const flavorRow = event.target.closest(".admin-flavor");
     const itemRow = event.target.closest(".admin-item");
     const product = event.target.closest(".admin-product");
+    const hourRow = event.target.closest(".admin-hour");
+
+    if (hourRow) {
+      hoursOf(store)[Number(hourRow.dataset.h)][field] = event.target.value;
+      setDirty(true);
+      return;
+    }
 
     if (flavorRow) {
       const flavor = store.flavorGroups[Number(flavorRow.dataset.g)].flavors[Number(flavorRow.dataset.f)];
@@ -302,16 +352,6 @@
       panel = btn.dataset.panel;
       render();
     });
-  });
-
-  copyBtn.addEventListener("click", () => {
-    const otherId = storeId === "sudoeste" ? "asa-norte" : "sudoeste";
-    const other = catalog.stores[otherId];
-    if (!window.confirm(`Substituir o cardápio de ${currentStore().name} pelo de ${other.name}?`)) return;
-    currentStore().flavorGroups = structuredClone(other.flavorGroups);
-    currentStore().categories = structuredClone(other.categories);
-    setDirty(true);
-    render();
   });
 
   saveBtn.addEventListener("click", persist);
