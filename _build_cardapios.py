@@ -4,7 +4,7 @@
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-ASSET_V = "14"
+ASSET_V = "15"
 
 TEMPLATE = """<!DOCTYPE html>
 <html lang="pt-BR">
@@ -49,14 +49,9 @@ TEMPLATE = """<!DOCTYPE html>
       <a href="#tamanhos">Tamanhos</a>
       <a href="#sobremesas">Sobremesas</a>
       <a href="#cafeteria">Cafeteria</a>
-      <a href="#loja">Loja</a>
     </nav>
 
     <main>
-      <section class="menu-hero">
-        <p class="eyebrow">Cardápio da loja</p>
-        <h1>{name}</h1>
-      </section>
       <div id="cardapio-root">
         <section class="menu-block">
           <p class="menu-empty">Carregando cardápio…</p>
